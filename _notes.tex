@@ -41,9 +41,9 @@
 }
 \newline
 \tsIdea{Square a sum}{
-    \((\sum_{i=1}^{n} \lambda_i)^2 = (\sum_{i=1}^{n} \lambda_i)(\sum_{j=1}^{n} \lambda_j)
-    \\
-    = \sum_{i=1}^{n}\sum_{j=1}^{n}\lambda_i\lambda_j = \sum_{i=1}^{n}\lambda_i^2 + \sum_{i\neq j}^{} \lambda_i \lambda_j\)
+    \[\sum_{i=1}^{n} \lambda_i)^2 = (\sum_{i=1}^{n} \lambda_i)(\sum_{j=1}^{n} \lambda_j)
+        \\
+        = \sum_{i=1}^{n}\sum_{j=1}^{n}\lambda_i\lambda_j = \sum_{i=1}^{n}\lambda_i^2 + \sum_{i\neq j}^{} \lambda_i \lambda_j\]
     \\
     That is why \(\text{Tr}(A^2) \leq \text{Tr}(A)^2\). When all eigenvalues are zero or at most one is not zero, then this becomes equal.
 }
@@ -74,103 +74,103 @@
 \tsIdea{Invertible matrix singular values}{Invertible matrix singular values are strictly positive.}
 \newline
 \tsIdea{Creative Gauchy-Schwarz Inequality}{To prove
-    \(
-    \sum_{i=1}^n \frac{a_i^2}{b_i}
-    \;\ge\;
-    \frac{\left(\sum_{i=1}^n a_i\right)^2}{\sum_{i=1}^n b_i},
-    \)
+    \[
+        \sum_{i=1}^n \frac{a_i^2}{b_i}
+        \;\ge\;
+        \frac{\left(\sum_{i=1}^n a_i\right)^2}{\sum_{i=1}^n b_i},
+    \]
     apply the Cauchy-Schwarz inequality to the vectors
-    \(
-    \left(
-    \frac{a_1}{\sqrt{b_1}},
-    \dots,
-    \frac{a_n}{\sqrt{b_n}}
-    \right)
-    \quad\text{and}\quad
-    \left(
-    \sqrt{b_1},
-    \dots,
-    \sqrt{b_n}
-    \right).
-    \)
+    \[
+        \left(
+        \frac{a_1}{\sqrt{b_1}},
+        \dots,
+        \frac{a_n}{\sqrt{b_n}}
+        \right)
+        \quad\text{and}\quad
+        \left(
+        \sqrt{b_1},
+        \dots,
+        \sqrt{b_n}
+        \right).
+    \]
     Their dot product is
-    \(
-    \sum_{i=1}^n a_i,
-    \)
+    \[
+        \sum_{i=1}^n a_i,
+    \]
     and their squared norms are
-    \(
-    \sum_{i=1}^n \frac{a_i^2}{b_i}
-    \quad\text{and}\quad
-    \sum_{i=1}^n b_i.
-    \)
+    \[
+        \sum_{i=1}^n \frac{a_i^2}{b_i}
+        \quad\text{and}\quad
+        \sum_{i=1}^n b_i.
+    \]
     By Cauchy-Schwarz,
     \\
-    \(
-    \left(\sum_{i=1}^n a_i\right)^2
-    \le
-    \left(\sum_{i=1}^n \frac{a_i^2}{b_i}\right)
-    \left(\sum_{i=1}^n b_i\right),
-    \)
+    \[
+        \left(\sum_{i=1}^n a_i\right)^2
+        \le
+        \left(\sum_{i=1}^n \frac{a_i^2}{b_i}\right)
+        \left(\sum_{i=1}^n b_i\right),
+    \]
     \\
     which rearranges by division with a sum of \(b\) to the desired inequality.
 }
-\tsIdea{Matrix Representation of a Linear Map}{
-\[
-    f:\mathbb R^2 \to M_{2\times2}(\mathbb R), \qquad
-    f(a,b)=
-    \begin{pmatrix}
-        a & -b \\
-        b & a
-    \end{pmatrix}
-\]
+% \tsIdea{Matrix Representation of a Linear Map}{
+% \[
+%     f:\mathbb R^2 \to M_{2\times2}(\mathbb R), \qquad
+%     f(a,b)=
+%     \begin{pmatrix}
+%         a & -b \\
+%         b & a
+%     \end{pmatrix}
+% \]
 
-\[
-    \mathcal B_1=
-    \left\{
-    \begin{pmatrix}1&0\\0&-1\end{pmatrix},
-    \begin{pmatrix}0&-1\\1&0\end{pmatrix},
-    \begin{pmatrix}1&0\\0&0\end{pmatrix}
-    \begin{pmatrix}0&0\\0&1\end{pmatrix}
-    \right\}
-\]
+% \[
+%     \mathcal B_1=
+%     \left\{
+%     \begin{pmatrix}1&0\\0&-1\end{pmatrix},
+%     \begin{pmatrix}0&-1\\1&0\end{pmatrix},
+%     \begin{pmatrix}1&0\\0&0\end{pmatrix}
+%     \begin{pmatrix}0&0\\0&1\end{pmatrix}
+%     \right\}
+% \]
 
-\[
-    \mathcal B_1=\{B_1,B_2,B_3,B_4\}
-\]
+% \[
+%     \mathcal B_1=\{B_1,B_2,B_3,B_4\}
+% \]
 
-\[
-    f(a,b)=aB_1+bB_2+0B_3+2aB_4
-\]
+% \[
+%     f(a,b)=aB_1+bB_2+0B_3+2aB_4
+% \]
 
-\[
-    [f(a,b)]_{\mathcal B_1}
-    =
-    \begin{pmatrix}
-        a \\
-        b \\
-        0 \\
-        2a
-    \end{pmatrix}
-\]
+% \[
+%     [f(a,b)]_{\mathcal B_1}
+%     =
+%     \begin{pmatrix}
+%         a \\
+%         b \\
+%         0 \\
+%         2a
+%     \end{pmatrix}
+% \]
 
-\[
-    F\begin{pmatrix}a\\b\end{pmatrix}
-    =
-    [f(a,b)]_{\mathcal B_1},
-    \qquad
-    F=
-    \begin{pmatrix}
-        1 & 0 \\
-        0 & 1 \\
-        0 & 0 \\
-        2 & 0
-    \end{pmatrix}
-\]
+% \[
+%     F\begin{pmatrix}a\\b\end{pmatrix}
+%     =
+%     [f(a,b)]_{\mathcal B_1},
+%     \qquad
+%     F=
+%     \begin{pmatrix}
+%         1 & 0 \\
+%         0 & 1 \\
+%         0 & 0 \\
+%         2 & 0
+%     \end{pmatrix}
+% \]
 
-\[
-    \text{Columns of }F = [f(e_1)]_{\mathcal B_1},\ [f(e_2)]_{\mathcal B_1}
-\]
-}
+% \[
+%     \text{Columns of }F = [f(e_1)]_{\mathcal B_1},\ [f(e_2)]_{\mathcal B_1}
+% \]
+% }
 \tsIdea{Why Tr\((A) = \sum_{i=1}^{n}\lambda_i \)}{
     Eigenvalues are the roots of the characteristic polynomial.
     \\

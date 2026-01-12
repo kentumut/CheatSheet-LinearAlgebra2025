@@ -145,28 +145,197 @@ $\bullet \ q_1 = \frac{a_1}{\|a_1\|}.$
 \\
 $\bullet$ For $k = 2$, \ldots, $n$ do $q_k' = a_k - \sum_{i=1}^{k-1} (a_k^\top q_i)\, q_i$, \\ $\bullet$ normalise $q_k = \frac{q_k'}{\|q_k'\|}.$
 
-
+\subsection*{Solving Linear Recurrences via Matrix Diagonalization}
+We are given the recurrence relation
 \[
-    \begin{tikzpicture}[baseline=(M.center)]
-        \matrix (M) [matrix of math nodes,
-            left delimiter=(,
-            right delimiter=),
-            row sep=6mm,
-            column sep=6mm] {
-            1 & 2 & 0 & 1 & 2 \\
-            0 & 0 & 0 & 0 & 3 \\
-            5 & 0 & 0 & 3 & 0 \\
-        };
-
-        % green arrows
-        \draw[green,->] (M-3-1) -- (M-1-3);
-        \draw[green,->] (M-3-3) -- (M-1-5);
-
-        % red arrows
-        \draw[red,->] (M-1-2) -- (M-3-4);
-        \draw[red,->] (M-1-4) -- (M-3-2);
-    \end{tikzpicture}
+    a_n = 5a_{n-1} - 6a_{n-2}, \quad \text{for } n \ge 2.
 \]
+Using the given formula, we can derive a matrix $M$ such that
+\[
+    \begin{pmatrix}
+        a_{n+1} \\
+        a_{n}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        5 & -6 \\
+        1 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        a_{n-1} \\
+        a_{n-2}
+    \end{pmatrix},
+    \quad
+    M =
+    \begin{pmatrix}
+        5 & -6 \\
+        1 & 0
+    \end{pmatrix},
+    \
+    \mathbf{g}_n = \begin{pmatrix}
+        a_{n+1} \\
+        a_n
+    \end{pmatrix},
+\]
+With initial vector
+\(
+\mathbf{g}_0 =
+\begin{pmatrix}
+    2 \\
+    0
+\end{pmatrix},
+\
+\text{we have }
+\mathbf{g}_n = M^n \mathbf{g}_0.
+\)
+\\
+\textbf{Eigenvalues of $M$}
+\\
+We compute
+\(
+\det(M - \lambda I)
+=
+(5 - \lambda)(-\lambda) + 6
+=
+\lambda^2 - 5\lambda + 6.
+\)
+\\
+Solving,
+\(
+\lambda^2 - 5\lambda + 6 = 0
+\ \Rightarrow \
+(\lambda - 3)(\lambda - 2) = 0.
+\)
+\\
+Hence,
+\(
+\lambda_1 = 3, \quad \lambda_2 = 2.
+\)
+\\
+\textbf{Eigenvectors}
+\\
+For $\lambda = 3$:
+\[
+    (M - 3I)
+    =
+    \begin{pmatrix}
+        2 & -6 \\
+        1 & -3
+    \end{pmatrix}.
+\]
+Solving $(M - 3I)\mathbf{v} = 0$ gives
+\(\
+2x - 6y = 0 \ \Rightarrow \ x = 3y,
+\)
+so EV
+\(
+\mathbf{v}_1 =
+\begin{pmatrix}
+    3 \\
+    1
+\end{pmatrix}.
+\)
+For $\lambda = 2$:
+\[
+    (M - 2I)
+    =
+    \begin{pmatrix}
+        3 & -6 \\
+        1 & -2
+    \end{pmatrix}.
+\]
+Solving $(M - 2I)\mathbf{v} = 0$ gives
+\(
+x - 2y = 0 \ \Rightarrow \ x = 2y,
+\)
+so EV
+\(
+\mathbf{v}_2 =
+\begin{pmatrix}
+    2 \\
+    1
+\end{pmatrix}.
+\)
+\\
+\textbf{Closed Form}
+\\
+Since $\mathbf{v}_1$ and $\mathbf{v}_2$ are linearly independent, we can write
+\[
+    \mathbf{g}_0 = \alpha_1 \mathbf{v}_1 + \alpha_2 \mathbf{v}_2.
+\]
+That is,
+\[
+    \begin{pmatrix}
+        2 \\
+        0
+    \end{pmatrix}
+    =
+    \alpha_1
+    \begin{pmatrix}
+        3 \\
+        1
+    \end{pmatrix}
+    +
+    \alpha_2
+    \begin{pmatrix}
+        2 \\
+        1
+    \end{pmatrix}.
+\]
+Solving,
+\[
+    \alpha_1 = 2, \quad \alpha_2 = -2.
+\]
+Therefore,
+\(
+\mathbf{g}_n
+=
+\alpha_1 3^n \mathbf{v}_1
++
+\alpha_2 2^n \mathbf{v}_2
+=
+2 \cdot
+3^n
+\begin{pmatrix}
+    3 \\
+    1
+\end{pmatrix}
+-
+2^{n+1}
+\begin{pmatrix}
+    2 \\
+    1
+\end{pmatrix}.
+\)
+\\
+Thus,
+\(
+a_n = 2\cdot 3^n - 2^{n+1}.
+\)
+
+% \[
+%     \begin{tikzpicture}[baseline=(M.center)]
+%         \matrix (M) [matrix of math nodes,
+%             left delimiter=(,
+%             right delimiter=),
+%             row sep=6mm,
+%             column sep=6mm] {
+%             1 & 2 & 0 & 1 & 2 \\
+%             0 & 0 & 0 & 0 & 3 \\
+%             5 & 0 & 0 & 3 & 0 \\
+%         };
+
+%         % green arrows
+%         \draw[green,->] (M-3-1) -- (M-1-3);
+%         \draw[green,->] (M-3-3) -- (M-1-5);
+
+%         % red arrows
+%         \draw[red,->] (M-1-2) -- (M-3-4);
+%         \draw[red,->] (M-1-4) -- (M-3-2);
+%     \end{tikzpicture}
+% \]
+
+
 
 % \subsection*{Gaussian Elimination (to Row Echelon Form)}
 % \textbf{Goal:} Use elementary row operations to transform the augmented matrix $[A|b]$
