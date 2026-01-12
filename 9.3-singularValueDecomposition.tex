@@ -7,8 +7,8 @@
         A = U\Sigma V^\top.
     \]
     The columns of $U$ and $V$ are called the left and right singular vectors of
-    $A$, and the diagonal entries of $\Sigma$ are the singular values of $A$.
-}
+    $A$, and the diagonal entries of $\Sigma$ are the singular values of $A$. Columns of U are the eigenvectors of $AA^{\top}$ and columns of $V^{\top}$ are the eigenvectors of $A^{\top}A$. $\Sigma$ has the square root of the eigenvalues of $AA^{\top}}$ / $A^\top A$ (they are the same). U has the dimensions mxm and V has the dimensions nxn. U, V are orthogonal matrices.
+\newline
 \tsIdea{R 9.3.2 (Compact form of SVD)}{If $\operatorname{rank}(A)=r$, then the SVD can be written as
     \[
         A = U_r \Sigma_r V_r^\top,
@@ -32,4 +32,12 @@
         A=\sum_{k=1}^r \sigma_k\,u_k v_k^\top.
     \]
     Main idea: \textit{We can write any rank-$r$ matrix $A \in \tsS{R}^{m \times n}$ as a sum of \(r\) rank-1 matrices.}
+\newline
+}
+\tsIdea{SVD of the Inverse $A^{-1}$}{If $A = U \Sigma V^{\top},
+\quad
+\Sigma = \operatorname{diag}(\sigma_1, \dots, \sigma_n).$, then the SVD of the inverse can be written as
+    \[
+        A^{-1} = V \Sigma^{-1} U^{\top}.
+    \] where \[ \Sigma^{-1} = \operatorname{diag}(\frac{1}{\sigma_1}, \dots, \frac{1}{\sigma_n}). \]
 }
