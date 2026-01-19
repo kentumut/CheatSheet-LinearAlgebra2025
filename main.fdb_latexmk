@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1768770619.88757 "/Users/kentumut/Desktop/ETH/LinAlg/CheatSheet-LinearAlgebra2025/main.tex" "main.pdf" "main" 1768770622.73215 0
+["pdflatex"] 1768808283.29148 "/Users/kentumut/Desktop/ETH/LinAlg/CheatSheet-LinearAlgebra2025/main.tex" "main.pdf" "main" 1768808285.59235 0
   "/Users/kentumut/Desktop/ETH/LinAlg/CheatSheet-LinearAlgebra2025/main.tex" 1768768807.99831 4147 15821db681c3b136811081bb3e30feb5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -248,7 +248,7 @@
   "1.1-vectors.tex" 1767898750.03607 2700 9b8e0c718a40a296d9bd3ba42f83096b ""
   "2.1-matrices.tex" 1766942045.29733 5473 a28c0a2c7d669052e761581d71ddf83f ""
   "4.1-vectorSpaces.tex" 1768768375.01229 1782 63b51b4adebf1e823fd7ca9158d49653 ""
-  "4.2-basesAndDimension.tex" 1768767271.09619 2616 fed5d39b5842109bff7ff3748c8cdbe6 ""
+  "4.2-basesAndDimension.tex" 1768808282.93625 2617 8a0eb002ee918be9cdb85591b310a470 ""
   "4.3-computingThreeFundamentalSubspaces.tex" 1768767271.09663 2475 1c389d63573cd726112d1772accd50be ""
   "4.4-allSolutions.tex" 1766942045.29844 1743 98a3ebba4accd46377c3d3221a89ee8f ""
   "5.1-orthogonality.tex" 1766942045.29862 1895 6f7f71b623d09dfbe687c12a9101f136 ""
@@ -264,10 +264,10 @@
   "9.1-diagonalization.tex" 1766942045.30053 2070 3df8907456346bebb8d3cb4d1ca91009 ""
   "9.2-symmetricMatricesAndSpectralTheorem.tex" 1766942045.30075 4357 3dc6b3f5891973f0866095764a5b4aaf ""
   "9.3-singularValueDecomposition.tex" 1768767271.09934 2340 fc1df58cd16b4704f67d8029e6e48cfc ""
-  "algorithms.tex" 1768770619.64899 14354 46ba9467b8986e107cbe7d7b134c8066 ""
+  "algorithms.tex" 1768770629.32233 14354 46ba9467b8986e107cbe7d7b134c8066 ""
   "bonusQuizzes.tex" 1768767271.06585 12450 2cbfcee56716781fb88a84a726bc9784 ""
-  "main.aux" 1768770622.61024 3647 182f17e6fe7f00dbc8590e2d00e0a259 "pdflatex"
-  "main.out" 1768770622.61087 4862 95b551df66f4a6245e0ab70e069d86e3 "pdflatex"
+  "main.aux" 1768808285.4881 3647 182f17e6fe7f00dbc8590e2d00e0a259 "pdflatex"
+  "main.out" 1768808285.48874 4862 95b551df66f4a6245e0ab70e069d86e3 "pdflatex"
   "main.tex" 1768768807.99831 4147 15821db681c3b136811081bb3e30feb5 ""
   (generated)
   "main.aux"
