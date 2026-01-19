@@ -41,7 +41,7 @@
 }
 \newline
 \tsIdea{Square a sum}{
-    \[\sum_{i=1}^{n} \lambda_i)^2 = (\sum_{i=1}^{n} \lambda_i)(\sum_{j=1}^{n} \lambda_j)
+    \[(\sum_{i=1}^{n} \lambda_i)^2 = (\sum_{i=1}^{n} \lambda_i)(\sum_{j=1}^{n} \lambda_j)
         \\
         = \sum_{i=1}^{n}\sum_{j=1}^{n}\lambda_i\lambda_j = \sum_{i=1}^{n}\lambda_i^2 + \sum_{i\neq j}^{} \lambda_i \lambda_j\]
     \\
@@ -73,7 +73,7 @@
 \newline
 \tsIdea{Invertible matrix singular values}{Invertible matrix singular values are strictly positive.}
 \newline
-\tsIdea{Creative Gauchy-Schwarz Inequality}{To prove
+\tsIdea{Creative Cauchy-Schwarz Inequality}{To prove
     \[
         \sum_{i=1}^n \frac{a_i^2}{b_i}
         \;\ge\;
@@ -266,3 +266,8 @@
         \Rightarrow A+iI \text{ is invertible}
     $
 }
+\tsIdea{Notes Extra}{The outer product\(A = uv^{\top}\) has always rank(A) = 1.}
+\newline
+Invertible matrices always have positive singular values.
+\newline
+If A has the eigenvalue \(\lambda \), \(A^2\) has the eigenvalue \(\lambda^2 \). 

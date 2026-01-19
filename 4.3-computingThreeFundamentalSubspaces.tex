@@ -14,7 +14,16 @@
 \tsLem{4.35 (Nullspace isomorphism)}{$R = \operatorname{RREF}(A)$, then \(T : N(R) \to \tsS{R}^{n-r}\) is an isomorphism between \(N(R)\) and \(\tsS{R}^{n-r}\) \(\Rightarrow\) \(\dim(N(R)) = n - r\).}
 \newline
 \tsThe{4.36 (Basis of \(N(A)\): Non-pivot columns of $\operatorname{RREF}(A)$)}
-{If $\operatorname{rank}(A)=r$, then \(\dim(N(A))=n-r.\)}
+{If $\operatorname{rank}(A)=r$, then \(\dim(N(A))=n-r.\)
+\newline
+For finding a basis of N(A):
+First put A into RREF form R.
+Identify the pivot columns and the non-pivot columns. Write the system Ax = 0.
+Write the pivot variables in terms of the non-pivot (free) variables.
+Then, for each non-pivot column, set the corresponding free variable to 1
+and all other free variables to 0, and compute the resulting vector.
+These vectors form a basis of N(A).
+}
 % \[
 %     \begin{aligned}
 %         A    & ={\scriptsize

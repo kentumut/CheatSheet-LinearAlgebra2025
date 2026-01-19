@@ -1,5 +1,5 @@
 \subsection{Orthonormal Bases and Gram Schmidt}
-\tsDef{6.3.1 (Orthonomral vectors)}{\(q_i^\top q_j = \delta_{ij} = \begin{cases} 0 & i\neq j \\ 1 & i = j \end{cases}\) (orthogonal
+\tsDef{6.3.1 (Orthonormal vectors)}{\(q_i^\top q_j = \delta_{ij} = \begin{cases} 0 & i\neq j \\ 1 & i = j \end{cases}\) (orthogonal
     and have norm 1)}
 \newline
 \tsDef{6.3.3 (Orthogonal Matrix)}{A square matrix $Q \in \mathbb{R}^{n \times n}$ is an \emph{orthogonal matrix} when $Q^{\top} Q = I$ If it is square, then, $Q Q^{\top} = I$ , $Q^{-1} = Q^{\top}$, and the columns of $Q$ form an orthonormal basis for $\mathbb{R}^n$. \(\tsPoint\) Orthogonal (rotation) matrix example: {\scriptsize $R_\theta =\begin{bmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{bmatrix}.$}}
@@ -8,7 +8,7 @@
 \newline
 \tsProp{6.3.7 (Least square solution to \(Qx = b\))}{The least square solution to \(Qx = b\)}, where \(Q\) is the matrix whose columns are the vectors forming the orthonomal basis of \(S \subseteq \mathbb{R}^m\), is given by \(\hat{x}=Q^\top b\) and the projection matrix is given by \(QQ^\top\).
 \newline
-\tsDef{6.3.8 (Gram-Schmidt algorithm)}{\textbf{Gram-Schmidt:} used to construct orthonormal bases. \\ We have linearly indepenedent vectors \(a_1, ..., a_n\) that span a subspace \(S\), then we can construct their orthonormal basis \(q_1,...,q_n\) by:
+\tsDef{6.3.8 (Gram-Schmidt algorithm)}{\textbf{Gram-Schmidt:} used to construct orthonormal bases. \\ We have linearly independent vectors \(a_1, ..., a_n\) that span a subspace \(S\), then we can construct their orthonormal basis \(q_1,...,q_n\) by:
     \\
     $\bullet \ q_1 = \frac{a_1}{\|a_1\|}.$
     \\
@@ -19,4 +19,4 @@
 \newline
 \tsDef{6.3.11 (Well-Defined QR Decomposition)}{\(R\) - upper-triangluar and invertible matrix \(\Rightarrow QQ^\top A = A\), and hence, \(A = QR\) is well-defined.}
 \newline
-\tsIdea{Simplicity of calculation with Q}{\textbf{Projection:} \(\text{proj}_{C(A)}(b) = QQ^\top b\), \textbf{Least Squares:} \(R\hat{x} = Q^\top b\) \\ This is possible because \(C(A) = C(Q)\) and \(R\) is triangular - we can use back-substitution with it.}
+\tsIdea{Simplicity of calculation with Q}{\textbf{Projection:} \(\text{proj}_{C(A)}(b) = QQ^\top b\), \textbf{Least Squares:} \(R\hat{x} = Q^\top b\) \\ This is possible because \(C(A) = C(Q)\) and \(R\) is triangular - we can use back-substitution with it. R is invertible.}

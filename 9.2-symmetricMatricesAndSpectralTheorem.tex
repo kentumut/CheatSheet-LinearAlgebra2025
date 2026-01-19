@@ -54,15 +54,16 @@
     \lambda \in \mathbb{C} \quad \Rightarrow \quad \lambda \in \mathbb{R}.
     \) Indeed, if $Av = \lambda v$: \\
     \(
-    \lambda \|v\|^2
+    \overline{\lambda} \|v\|^2
     = \overline{\lambda} \, v^* v
     = (\lambda v)^* v
     = (Av)^* v
-    = v^* A^* v
+    = v^* A^T v
     = v^* A v
     = v^* \lambda v
     = \lambda \|v\|^2.
     \)
+    Thus $\lambda = \overline{\lambda}$, so $\lambda \in \mathbb{R}$.
     $\Rightarrow$ every symmetric matrix
     $A \in \mathbb{R}^{n \times n}$
     has a real eigenvalue. \hfill (C 9.2.9)

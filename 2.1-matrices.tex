@@ -1,6 +1,6 @@
 \tsDef{2.1 (Matrix)}{\(A = [a_{ij}]{^m_{i=1}}{^n_{,j=1}}\) - $m$ rows, $n$ columns (\textit{Zeilen zuerst, Spalten später})}
 \newline
-\tsDef{2.2 (Matrix addition, scalat multiplication)}{Addition: \(A + B = [a_{ij}+b_{ij}]{^m_{i=1}}{^n_{,j=1}}\) \(\tsPoint\) Scalar multiplication: \(\lambda A = [\lambda a_{ij}]{^m_{i=1}}{^n_{,j=1}}\)}
+\tsDef{2.2 (Matrix addition, scalar multiplication)}{Addition: \(A + B = [a_{ij}+b_{ij}]{^m_{i=1}}{^n_{,j=1}}\) \(\tsPoint\) Scalar multiplication: \(\lambda A = [\lambda a_{ij}]{^m_{i=1}}{^n_{,j=1}}\)}
 \newline
 \tsIdea{Matrix types}{\textbf{Identity matrix} ($a_{ii} = 1$ for all $i$): $I$
     \(\tsPoint\) \textbf{Diagonal matrix} ($a_{ij} = 0$ for all $i \ne j$): $\operatorname{diag}(d_1,\dots,d_n)$
@@ -13,7 +13,7 @@
 \tsDef{2.4 (Matrix-vector product)}{Rows of matrix $(m \times n)$ with vector $(n$ elements), i.e.
     \\
     \(
-    u_1 = \sum_{i=1}^{m} a_{1,i}\, v_i, \
+    u_1 = \sum_{j=1}^{n} a_{1,j}\, v_j, \
     Ix = x;
     \)
     \textbf{Trace:} Sum of the diagonal entries.
@@ -104,7 +104,7 @@
     \)
     Use Gauss-Jordan elimination to find it (row transformations).
     \textbf{Reduced REF:}
-    RREF is simply REF without any zero rows
+    RREF has pivots equal to 1 with zeros above and below each pivot and no zero rows
     (i.e.\ in $R_0$, $R$ (in RREF) would be $R_0$ without the last row).
 }
 \newline

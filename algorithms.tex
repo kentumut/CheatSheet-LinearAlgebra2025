@@ -18,8 +18,8 @@ otherwise solve by back-substitution.
 \]
 \subsection*{Gauss-Jordan Elimination.}
 Starting from $[A\,|\,b]$, apply Gaussian elimination, then normalize each
-pivot to $1$ and eliminate all other entries in the pivot columns.
-The resulting reduced row echelon form (RREF) gives the solution directly.
+pivot to $1$ and eliminate all other entries in the pivot columns (pivot columns must be basis vectors).
+The resulting reduced row echelon form (RREF) gives the solution directly. Pivot positions move strictly to the right as you go down the rows.
 Solve:
 \[
     \begin{cases}
@@ -80,7 +80,7 @@ Gauss--Jordan elimination. If
 then $B=A^{-1}$. If $I$ cannot be obtained on the left, $A$ is not invertible.
 \[
     \begin{aligned}
-        [A\,|\,I]1 =
+        [A\,|\,I] =
         \left[
             \begin{array}{cc|cc}
                 1 & 2 & 1 & 0 \\
@@ -139,12 +139,40 @@ then $B=A^{-1}$. If $I$ cannot be obtained on the left, $A$ is not invertible.
 }
 
 \subsection*{Forming orthonormal basis via Gram-Schmidt.}
-Gram-Schmidt used to construct orthonormal bases. \\ We have linearly indepenedent vectors \(a_1, ..., a_n\) that span a subspace \(S\), then we can construct their orthonormal basis \(q_1,...,q_n\) by:
+Gram-Schmidt used to construct orthonormal bases. \\ We have linearly independent vectors \(a_1, ..., a_n\) that span a subspace \(S\), then we can construct their orthonormal basis \(q_1,...,q_n\) by:
 \\
 $\bullet \ q_1 = \frac{a_1}{\|a_1\|}.$
 \\
 $\bullet$ For $k = 2$, \ldots, $n$ do $q_k' = a_k - \sum_{i=1}^{k-1} (a_k^\top q_i)\, q_i$, \\ $\bullet$ normalise $q_k = \frac{q_k'}{\|q_k'\|}.$
 
+\subsection*{Rule of Sarrus (Computing 3x3 Determinants).}
+The green arrows represent sum1 = aei + bfg + cdh and the red arrows represent sum2 = gec + hfa + idb. The determinant is given by \(\det(A) = \text{sum1} - \text{sum2}\).
+\[
+    \begin{tikzpicture}[baseline=(M.center)]
+        \matrix (M) [matrix of math nodes,
+            left delimiter=(,
+            right delimiter=),
+            row sep=6mm,
+            column sep=6mm] {
+            a & b & c & a & b \\
+            d & e & f & d & e \\
+            g & h & i & g & h \\
+        };
+
+        % red arrows
+        \draw[red,->] (M-3-1) -- (M-1-3);
+        \draw[red,->] (M-3-2) -- (M-1-4);
+        \draw[red,->] (M-3-3) -- (M-1-5);
+
+        % green arrows
+        \draw[green,->] (M-1-1) -- (M-3-3);
+        \draw[green,->] (M-1-2) -- (M-3-4);
+        \draw[green,->] (M-1-3) -- (M-3-5);
+
+        % Augmented divider line
+        \draw ([xshift=3mm]M-1-3.east) -- ([xshift=3mm]M-3-3.east);
+    \end{tikzpicture}
+\]
 \subsection*{Solving Linear Recurrences via Matrix Diagonalization}
 We are given the recurrence relation
 \[
