@@ -6,66 +6,72 @@
     \textbf{1. Basis for } P
     \\
     Solve for \(x_2\):
-    \[
-        x_2 = 6x_1 + 5x_3
-    \]
+    \(
+    x_2 = 6x_1 + 5x_3
+    \)
     Let \(x_1=s,\; x_3=t\):
-    \[
-        (x_1,x_2,x_3) = (s,6s+5t,t)
-        = s(1,6,0) + t(0,5,1)
-    \]
-    \[
-        \boxed{\mathcal B_P = \{(1,6,0),(0,5,1)\}}
-    \]
+    \(
+    (x_1,x_2,x_3) = (s,6s+5t,t)
+    = s(1,6,0) + t(0,5,1)
+    \)
+    \(
+    \boxed{\mathcal B_P = \{(1,6,0),(0,5,1)\}}
+    \)
+    \\
     \textbf{2. Intersection with } $\operatorname{span}\{e_1,e_2\}$
     \\
-    \[
-        x_3 = 0 \Rightarrow 6x_1 - x_2 = 0 \Rightarrow x_2 = 6x_1
-    \]
-    \[
-        (x_1,x_2,x_3) = s(1,6,0)
-    \]
-    \[
-        \boxed{\mathcal B_{P \cap \operatorname{span}\{e_1,e_2\}} = \{(1,6,0)\}}
-    \]
+    \(
+    x_3 = 0 \Rightarrow 6x_1 - x_2 = 0 \Rightarrow x_2 = 6x_1
+    \)
+    \(
+    (x_1,x_2,x_3) = s(1,6,0)
+    \)
+    \(
+    \boxed{\mathcal B_{P \cap \operatorname{span}\{e_1,e_2\}} = \{(1,6,0)\}}
+    \)
+    \\
     \textbf{3. Perpendicular vectors to } P
     \\
     Normal vector from plane equation:
-    \[
-        \mathbf n = (6,-1,5)
-    \]
-    \[
-        P^\perp = \operatorname{span}\{(6,-1,5)\}
-    \]
-    \[
-        \boxed{\mathcal B_{P^\perp} = \{(6,-1,5)\}}
-    \]
+    \(
+    \mathbf n = (6,-1,5)
+    \)
+    \(
+    P^\perp = \operatorname{span}\{(6,-1,5)\}
+    \)
+    \(
+    \boxed{\mathcal B_{P^\perp} = \{(6,-1,5)\}}
+    \)
 }
+\newline
 \tsIdea{Compute bases for orthogonal spaces}{
     \textbf{Finding } $S^\perp \subset \mathbb{R}^3$ \textbf{ when } $S=\mathrm{span}\{v\}$
     \\
     Let $v=(a,b,c)\neq 0$ and $S=\mathrm{span}\{v\}$.
     Then
-    \[
-        S^\perp=\{u\in\mathbb{R}^3 : u\cdot v=0\}.
-    \]
+    \(
+    S^\perp=\{u\in\mathbb{R}^3 : u\cdot v=0\}.
+    \)
+    \\
     Let $u=(x,y,z)$. Orthogonality gives
-    \[
-        ax+by+cz=0.
-    \]
+    \(
+    ax+by+cz=0.
+    \)
+    \\
     Solve for one variable and parametrize.
     Choose convenient values for the free variables to obtain
     two linearly independent solutions.
     \\
     These two vectors form a basis for $S^\perp$.
     \\\textbf{Example: } v=(-6,-9,7)
-    \[
-        -6x-9y+7z=0
-    \]
+    \(
+    -6x-9y+7z=0
+    \)
+    \\
     Choose $(y,z)=(2,0)$ and $(0,6)$:
-    \[
-        u_1=(-3,2,0), \quad u_2=(7,0,6).
-    \]
+    \(
+    u_1=(-3,2,0), \quad u_2=(7,0,6).
+    \)
 }
 \tsIdea{Calculating four fundamental subspaces}{
     \textbf{Four Fundamental Subspaces}
@@ -73,10 +79,10 @@
     Let $A\in\mathbb{R}^{m\times n}$ with $\operatorname{rank}(A)=r$.
     \[
         \begin{aligned}
-            \dim \mathcal{C}(A)   & = r   \\
-            \dim \mathcal{C}(A^T) & = r   \\
-            \dim \mathcal{N}(A)   & = n-r \\
-            \dim \mathcal{N}(A^T) & = m-r
+            \dim \mathcal{C}(A) & = r   \quad
+                                &             & \dim \mathcal{C}(A^T)  = r   \\
+            \dim \mathcal{N}(A) & = n-r \quad
+                                &             & \dim \mathcal{N}(A^T)  = m-r
         \end{aligned}
     \]
     \[
@@ -87,13 +93,15 @@
 \tsIdea{Pseudoinverse of diagonal matrix}{
     Diagonal matrix \(\Rightarrow\) invert nonzero diagonals, keep zeros.
 }
+\newpage
+\(\hspace{-8px}\heartsuit\)
 \newline
 \tsIdea{Diagonalization of a symmetric matrix}{
     \textbf{Diagonalization of a symmetric matrix (example)}
     Let
-    \[
-        A=\begin{pmatrix}2&1\\[2pt]1&2\end{pmatrix}.
-    \]
+    \(
+    A=\begin{pmatrix}2&1\\[2pt]1&2\end{pmatrix}.
+    \)
     Characteristic polynomial:
     \[
         p_A(\lambda)=\det(A-\lambda I)
@@ -102,30 +110,35 @@
         =(\lambda-3)(\lambda-1).
     \]
     Eigenvalues:
-    \[
-        \lambda_1=3,\quad \lambda_2=1.
-    \]
+    \(
+    \lambda_1=3,\quad \lambda_2=1.
+    \)
+    \\
     Eigenvectors:
-    \[
-        \lambda_1=3:\ v_1=\begin{pmatrix}1\\1\end{pmatrix},\qquad
-        \lambda_2=1:\ v_2=\begin{pmatrix}1\\-1\end{pmatrix}.
-    \]
+    \(
+    \lambda_1=3:\ v_1=\begin{pmatrix}1\\1\end{pmatrix},\qquad
+    \lambda_2=1:\ v_2=\begin{pmatrix}1\\-1\end{pmatrix}.
+    \)
+    \\
     The eigenvectors are orthogonal:
-    \[
-        v_1\cdot v_2=0.
-    \]
+    \(
+    v_1\cdot v_2=0.
+    \)
+    \\
     Define
-    \[
-        V=\begin{pmatrix}1&1\\[2pt]1&-1\end{pmatrix},
-        \qquad
-        \Lambda=\begin{pmatrix}3&0\\[2pt]0&1\end{pmatrix}.
-    \]
+    \(
+    V=\begin{pmatrix}1&1\\[2pt]1&-1\end{pmatrix},
+    \
+    \Lambda=\begin{pmatrix}3&0\\[2pt]0&1\end{pmatrix}.
+    \)
+    \\
     Then
-    \[
-        A=V\Lambda V^{-1},
-        \qquad
-        V^{-1}=(V^TV)^{-1}V^T=\tfrac12 V^T.
-    \]
+    \(
+    A=V\Lambda V^{-1},
+    \
+    V^{-1}=(V^TV)^{-1}V^T=\tfrac12 V^T.
+    \)
+    \\
     \textbf{Remark:}
     The order of eigenvalues on the diagonal of $\Lambda$ is arbitrary.
     Reordering eigenvalues requires the same reordering of eigenvectors.
@@ -135,53 +148,44 @@
     \textbf{Computing singular values}
     \\
     For a matrix $A\in\mathbb{R}^{m\times n}$, the singular values are
-    \[
-        \sigma_i=\sqrt{\lambda_i},
-    \]
+    \(
+    \sigma_i=\sqrt{\lambda_i},
+    \)
     where $\lambda_i$ are the eigenvalues of $A^TA$.
     \\
     \textbf{Example:}
-    \[
-        A=\begin{pmatrix}3&0\\4&0\end{pmatrix}.
-    \]
+    \(
+    A=\begin{pmatrix}3&0\\4&0\end{pmatrix}.
+    \)
     Compute
-    \[
-        A^TA=
-        \begin{pmatrix}3&4\\0&0\end{pmatrix}
-        \begin{pmatrix}3&0\\4&0\end{pmatrix}
-        =
-        \begin{pmatrix}25&0\\0&0\end{pmatrix}.
-    \]
+    \(
+    A^TA=
+    \begin{pmatrix}3&4\\0&0\end{pmatrix}
+    \begin{pmatrix}3&0\\4&0\end{pmatrix}
+    =
+    \begin{pmatrix}25&0\\0&0\end{pmatrix}.
+    \)
     Eigenvalues of $A^TA$:
-    \[
-        \lambda_1=25,\quad \lambda_2=0.
-    \]
+    \(
+    \lambda_1=25,\quad \lambda_2=0.
+    \)
+    \\
     Singular values:
-    \[
-        \sigma_1=\sqrt{25}=5,\quad \sigma_2=\sqrt{0}=0.
-    \]
+    \(
+    \sigma_1=\sqrt{25}=5,\quad \sigma_2=\sqrt{0}=0.
+    \)
     \[\boxed
         {
             \text{Singular values of }A=\sqrt{\text{eigenvalues of }A^TA}.
         }
     \]
 }
-\tsIdea{Why determinant expansion along a row/column works}{
-    \textbf{Why determinant expansion along a row/column works}
-    \\
-    For any $n\times n$ matrix $M=(m_{ij})$, the determinant can be expanded
-    along any row $i$ or any column $j$ (Laplace expansion):
-    \\
-    \[
-        \det(M)=\sum_{j=1}^n m_{ij}C_{ij}
-        \quad\text{or}\quad
-        \det(M)=\sum_{i=1}^n m_{ij}C_{ij},
-    \]
-    where
+\tsIdea{Determinant expansion along a row/column works}{
+    Use:
     \[
         C_{ij}=(-1)^{i+j}\det(M_{ij})
     \]
-    is the cofactor, and $M_{ij}$ is obtained by deleting row $i$ and column $j$.
+    where \(C_{ij}\) is the cofactor, and $M_{ij}$ is obtained by deleting row $i$ and column $j$. Usually, we choose a row or a column that is zero except for one entry to simplify the expansion.
     \\ \\
     \textbf{Example:}
     \[
@@ -293,45 +297,48 @@
 \newline
 \tsIdea{Norm of a vector}{
     Norm (2) of a vector:
-    \[
-        \boxed{
-            \|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
-        }
-    \]
+    \(
+    \boxed{
+        \|\mathbf{v}\| = \sqrt{v_1^2 + v_2^2 + \cdots + v_n^2}
+    }
+    \)
 }
 \newline
 \tsIdea{Characteristic polynomial \& eigenvalues \& eigenvectors}{
     We can find Characteristic polynomial via:
-    \[
-        \boxed{\det(\lambda I - A) = (-1)^n \det(A - \lambda I)}
-    \]
+    \\
+    \(
+    \boxed{\det(\lambda I - A) = (-1)^n \det(A - \lambda I)}
+    \)
+    \\
     \(\bullet\) We can find corresponding eigenvectors $\mathbf{v}$ to eigenvalues $\lambda$ via:
-    \[
-        \boxed{(A - \lambda I)\mathbf{v} = 0}
-    \]
+    \(
+    \boxed{(A - \lambda I)\mathbf{v} = 0}
+    \)
 }
 \newline
 \tsIdea{Distance between vector and its projection}{
     Distance between vector and its projection is:
-    \[
-        \boxed{\| \text{vector} - \text{projection} \| = \| \mathbf{v} - \operatorname{proj}_\textit{S}(\mathbf{v}) \|}
-    \]
+    \\
+    \(
+    \boxed{\| \text{vector} - \text{projection} \| = \| \mathbf{v} - \operatorname{proj}_\textit{S}(\mathbf{v}) \|}
+    \)
 }
 \newline
 \tsIdea{Angle between vectors}{
     Angle between vectors:
-    \[
-        \boxed{
-            \cos(\theta) = \left( \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\| \|\mathbf{v}\|} \right)
-        }
-    \]
+    \(
+    \boxed{
+        \cos(\theta) = \left( \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\| \|\mathbf{v}\|} \right)
+    }
+    \)
 }
 \newline
 \tsIdea{When \(\textit{T}\) is linear transformation}{
     When \(\textit{T}\) is linear transformation, then:
-    \[
-        \boxed{2 \textit{T}(\mathbf{x}) + 3 \textit{T}(\mathbf{y}) = \textit{T}(2\mathbf{x} + 3\mathbf{y})}
-    \]
+    \(
+    \boxed{2 \textit{T}(\mathbf{x}) + 3 \textit{T}(\mathbf{y}) = \textit{T}(2\mathbf{x} + 3\mathbf{y})}
+    \)
     This might simplify some calculations a lot.
 }
 \newline

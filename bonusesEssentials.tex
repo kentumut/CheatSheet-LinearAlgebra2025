@@ -1,0 +1,475 @@
+\subsection*{\textit{Bonuses Solutions - essentials}}
+\tsIdea{1.3 Cauchy-Schwarz inequality}{
+    Let $\mathbf{1} := (1,\dots,1)\in\mathbb{R}^m$. Then
+    \(
+    \sum_{i=1}^m v_i = \langle \mathbf{1}, v\rangle.
+    \)
+    By Cauchy--Schwarz,
+    \(
+    \langle \mathbf{1}, v\rangle \le \|\mathbf{1}\|\,\|v\|.
+    \)
+    Since
+    \(
+    \|\mathbf{1}\| = \sqrt{1^2+\cdots+1^2} = \sqrt{m},
+    \)
+    we obtain
+    \(
+    \sum_{i=1}^m v_i \le \sqrt{m}\,\|v\|.
+    \)
+}
+\newline
+\tsIdea{2.2 Nullspace as a hyperplane (of rank-1 matrix)}{
+    Let
+    \(
+    A = v d^{\top},
+    \
+    v = (v_1,\dots,v_m)^{\top} \in \mathbb{R}^m,\; v \neq 0,
+    \
+    d = (\lambda_1,\dots,\lambda_n)^{\top} \in \mathbb{R}^n.
+    \)
+    \\
+    \textbf{Definition of nullspace:}
+    \(
+    N(A) = \{x \in \mathbb{R}^n : Ax = 0\}.
+    \)
+    \\
+    \textbf{Key computation:}
+    For any $x \in \mathbb{R}^n$,
+    \(
+    Ax = v d^{\top} x = (d^{\top}x)\, v.
+    \)
+    \\
+    \textbf{Use of $v \neq 0$:}
+    Since $v \neq 0$, the equality $Ax = 0$ holds if and only if
+    \(
+    d^{\top}x = 0.
+    \)
+}
+\newline
+\tsIdea{4.3 Matrix multiplication and invertibility}{
+    \textbf{Matrix cancellation rules.}
+    Let $A,B,C \in \mathbb{R}^{m\times m}$.
+    \begin{itemize}[noitemsep, topsep=0px]
+        \item \textbf{Right cancellation:}
+              \(
+              BA = CA \ \text{and}\ A \ \text{invertible}
+              \ \Longrightarrow\
+              B = C.
+              \)
+        \item \textbf{Failure without invertibility:}
+              \(
+              BA = CA \ \nRightarrow\ B = C.
+              \)
+        \item \textbf{Left mult. doesn't preserve equality:}
+              \(
+              BA = CA \ \nRightarrow\ AB = AC.
+              \)
+        \item \textbf{Kernel view:}
+              \(
+              BA = CA \ \Leftrightarrow\ (B-C)A = 0
+              \ \Rightarrow \
+              \operatorname{Im}(A) \subseteq \ker(B-C).
+              \)
+    \end{itemize}
+}
+\tsIdea{5.2 Strictly diagonally dominant matrices \(\Rightarrow\) Invertible}{
+    \textbf{Goal:} Show $Ax \neq 0$ for all $x \neq 0$. \textit{(Because of inv. $N(A)=\{0\}$)}
+    \\
+    \textbf{Step 1 (Maximal component).}
+    Let $x \in \mathbb{R}^m$, $x \neq 0$.
+    Choose $i$ such that
+    \(
+    |x_i| = \max_{1 \le j \le m} |x_j|.
+    \)
+    Then $|x_j| \le |x_i|$ for all $j$.
+    \\
+    \textbf{Step 2 (Single row argument).}
+    Consider the $i$-th component of $Ax$:
+    \(
+    (Ax)_i = \sum_{j=1}^m a_{ij} x_j
+    = \underbrace{\sum_{j \neq i} a_{ij} x_j}_{=:y}
+    + \underbrace{a_{ii} x_i}_{=:z}.
+    \)
+    \\
+    \textbf{Step 3 (Bound off-diag. terms).}
+    \(
+    |y|
+    \le \sum_{j \neq i} |a_{ij}| |x_j|
+    \le \sum_{j \neq i} |a_{ij}| |x_i|.
+    \)
+    \\
+    \textbf{Step 4 (Use strict diag. dominance).}
+    If $A$ is strictly diagonally dominant, then
+    \(
+    |a_{ii}| > \sum_{j \neq i} |a_{ij}|.
+    \)
+    Multiplying by $|x_i|$ gives
+    \(
+    |a_{ii}||x_i| > \sum_{j \neq i} |a_{ij}||x_i|
+    \)
+    From step 3 and above, it follow, that
+    \(
+    |z| = |a_{ii} x_i| > |y|.
+    \)
+    \\
+    \textbf{Step 5 (No cancellation).}
+    Since $|y| < |z|$, we have
+    \(
+    y + z \neq 0,
+    \)
+    hence $(Ax)_i \neq 0$ and therefore $Ax \neq 0$.
+    \\
+    \textbf{Conclusion.}
+    $Ax \neq 0$ for all $x \neq 0$ $\Rightarrow$ columns of $A$ are linearly independent
+    $\Rightarrow$ $A$ is invertible.
+    \textbf{Idea (one line).}
+    The diagonal term dominates all off-diagonal contributions in its row, preventing cancellation.
+}
+\tsIdea{6.3 Skew-symmetric matrices as a subspace}{
+    % Solution:
+    % \begin{enumerate}[label=(\alph*.)]
+    %     \item To show that set of matrices is a subspace of $\mathbb{R}^{m \times m}$ we must demonstrate
+    %           \begin{enumerate}[label=\arabic*.]
+    %               \item $S_m \subseteq \mathbb{R}^{m \times m}$
+    %               \item $0 \in S_m$
+    %               \item Let $A,B \in S_m$ and $\alpha \in \mathbb{F}$ be arbitrary:
+    %                     \begin{enumerate}[label=\Roman*.]
+    %                         \item $A+B \in S_m$
+    %                         \item $\alpha A \in S_m$
+    %                     \end{enumerate}
+    %           \end{enumerate}
+    %     \item To show the dimension of \(\mathcal{S}_m\) we will demonstrate:
+    %           Following the definition of dimension, we should:
+    %           \begin{enumerate}[label=\arabic*.]
+    %               \item find a basis $B \in S_m$
+    %               \item find its cardinality ($|B|$)
+    %           \end{enumerate}
+    % \end{enumerate}
+    \textbf{PART A}
+    \(
+    S_m := \{A\in \mathbb{R}^{m\times m} \;:\; A^T=-A\}
+    \)
+
+    \textbf{Goal: } $S_m$ is a subspace of $\mathbb{R}^{m\times m}$.
+
+    \begin{enumerate}[noitemsep, topsep=1px]
+        \item \textbf{Nonempty (contains $0$):}
+              \(
+              0^T=0=-0 \;\;\Rightarrow\;\; 0\in S_m.
+              \)
+
+        \item \textbf{Closed under addition:} If $A,B\in S_m$, then
+              \(
+              (A+B)^T = A^T + B^T = (-A)+(-B)=-(A+B)
+              \;\;\Rightarrow\;\; A+B\in S_m.
+              \)
+
+        \item \textbf{Closed under scalar multiplication:} If $\lambda\in\mathbb{R}$ and $A\in S_m$, then
+              \(
+              (\lambda A)^T = \lambda A^T = \lambda(-A)=-(\lambda A)
+              \;\;\Rightarrow\;\; \lambda A\in S_m.
+              \)
+    \end{enumerate}
+    \textbf{PART B}
+    \(
+    S_m := \{A\in\mathbb{R}^{m\times m} : A^T = -A\}
+    \)
+    \\
+    \textbf{Elementary matrices.}
+    For $i,j\in[m]$, define $E^{(ij)}\in\mathbb{R}^{m\times m}$ by
+    \(
+    E^{(ij)}_{lk} =
+    \begin{cases}
+        1 & \text{if } l=i,\ k=j, \\
+        0 & \text{otherwise}.
+    \end{cases}
+    \)
+    \\
+    \textbf{Candidate basis.}
+    \(
+    \mathcal{B} := \{\, E^{(ij)} - E^{(ji)} : i,j\in[m],\ i>j \,\}.
+    \)
+    \\
+    \textbf{Observation.}
+    \(
+    (E^{(ij)} - E^{(ji)})^T = E^{(ji)} - E^{(ij)} = -(E^{(ij)} - E^{(ji)}),
+    \)
+    so each element of $\mathcal{B}$ lies in $S_m$.
+    \begin{enumerate}[noitemsep, topsep=1px]
+        \item \textbf{Linear independence.}
+              Each matrix $E^{(ij)} - E^{(ji)}$ has a unique nonzero entry $1$ in position $(i,j)$
+              that does not appear in any other element of $\mathcal{B}$. Hence no element of
+              $\mathcal{B}$ is a linear combination of the others, and $\mathcal{B}$ is linearly independent.
+
+        \item \textbf{Spanning.}
+              Let $A\in S_m$. Then $A_{ij}=-A_{ji}$ and $A_{ii}=0$. We can write
+              \(
+              A = \sum_{i>j} A_{ij}\,(E^{(ij)} - E^{(ji)}),
+              \)
+              so every element of $S_m$ is a linear combination of elements of $\mathcal{B}$.
+              Thus, $\mathcal{B}$ spans $S_m$.
+    \end{enumerate}
+    \textbf{Dimension.}
+    There is one basis element for each pair $(i,j)$ with $i>j$. Hence (from script page 66)
+    \(
+    \dim(S_m) = |\mathcal{B}| = \sum_{i=1}^m (i-1) = \sum_{i=1}^{m-1} i = \frac{m(m-1)}{2}.
+    \)
+    % \(
+    % \boxed{\mathcal{B}\text{ is a basis of } S_m,\quad \dim(S_m)=\frac{m(m-1)}{2}.}
+    % \)
+}
+\tsIdea{7.2 Nullspace and column space}{
+    Let $v \in \mathbb{R}^3$ with $v \cdot v = 1$, and define
+    \(
+    A = vv^{\top}, \qquad P = I - A.
+    \)
+    \\
+    \textbf{(g) Fixed points of $A$}
+    \(
+    \{ w \in \mathbb{R}^3 : Aw = w \} = \{ \alpha v : \alpha \in \mathbb{R} \}
+    \)
+    Indeed,
+    \(
+    A(\alpha v) = \alpha v,
+    \)
+    and if $Aw = w$, then $w \in C(A) = \text{span}(v)$.
+    \\
+    \textbf{(h) Null space of $P$}
+    \(
+    Pw = 0
+    \iff (I - A)w = 0
+    \iff Aw = w.
+    \)
+    Thus,
+    \(
+    N(P) = \{ w : Aw = w \} = C(A).
+    \)
+    \\
+    \textbf{(i) Column space of $P$}
+    First, let $w \in C(P)$, so $w = Px$:
+    \(
+    Aw = A(Px) = A(I - A)x = (A - A^2)x = 0,
+    \)
+    since $A^2 = A$. Hence $C(P) \subseteq N(A)$.
+    Conversely, if $w \in N(A)$, then $Aw = 0$ and
+    \(
+    Pw = (I - A)w = w,
+    \)
+    so $w \in C(P)$:
+    \(
+    C(P) = N(A)
+    \)
+}
+\newline
+\tsIdea{8.2 Fitting a parabola}{
+    \textbf{Goal.}
+    Show that the columns
+    \(
+    \begin{pmatrix} t_1^2 \\ \vdots \\ t_m^2 \end{pmatrix},\quad
+    \begin{pmatrix} t_1 \\ \vdots \\ t_m \end{pmatrix},\quad
+    \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}
+    \)
+    are linearly independent for distinct $t_1,\dots,t_m \in \mathbb{R}$ with $m \ge 3$.
+    \\
+    \textbf{Step 1. Reduction.}
+    By Lemma 6.1.2, the vectors $(t_i)$ and $(1)$ are linearly independent.
+    It suffices to show that $(t_i^2)$ is not a linear combination of them.
+    \\
+    \textbf{Step 2. Contradiction assumption.}
+    Assume there exist $\lambda,\mu \in \mathbb{R}$ such that for all $i$,
+    \(
+    t_i^2 = \lambda t_i + \mu.
+    \)
+    \\
+    \textbf{Step 3. Eliminate $\mu$.}
+    For any $i \neq j$,
+    \(
+    t_i^2 - \lambda t_i = t_j^2 - \lambda t_j
+    \quad \Rightarrow \quad
+    t_i^2 - t_j^2 = \lambda (t_i - t_j).
+    \)
+    \\
+    \textbf{Step 4. Factor and divide.}
+    \(
+    (t_i - t_j)(t_i + t_j) = \lambda (t_i - t_j).
+    \)
+    Since $t_i \neq t_j$, divide by $(t_i - t_j)$:
+    \(
+    t_i + t_j = \lambda.
+    \)
+    \\
+    \textbf{Step 5. Contradiction.}
+    For $m \ge 3$, take $t_1,t_2,t_3$:
+    \(
+    t_1 + t_2 = \lambda = t_2 + t_3
+    \quad \Rightarrow \quad
+    t_1 = t_3,
+    \)
+    contradicting distinctness.
+    \\
+    \textbf{Conclusion.}
+    No such $\lambda,\mu$ exist. The three columns are linearly independent, hence the matrix has full column rank.
+}
+\tsIdea{9.2 Characterizing solvability via nullspaces}{
+\textbf{Claim.}
+There exists some $c \in \mathbb{R}^m$ such that
+\(
+Ax + By = c
+\)
+has no solution if and only if
+\(
+\mathcal N(A^T) \cap \mathcal N(B^T) \neq \{0\}.
+\)
+\\
+\textbf{Proof.}
+Write the system as
+\(
+[A\;B]\begin{pmatrix}x\\y\end{pmatrix} = c.
+\)
+\emph{($\Leftarrow$)}
+Assume $\mathcal N(A^T) \cap \mathcal N(B^T) \neq \{0\}$.
+Then there exists $z \neq 0$ such that
+\(
+A^T z = 0, \quad B^T z = 0,
+\)
+hence
+\(
+z^T [A\;B] = 0.
+\)
+Choose
+\(
+c = \frac{1}{\|z\|^2} z,
+\)
+so that $z^T c = 1$.
+By Theorem~6.2.4, the system $[A\;B]u = c$ is not solvable.
+\emph{($\Rightarrow$)}
+Assume there exists $c \in \mathbb{R}^m$ such that $[A\;B]u = c$ has no solution.
+By Theorem~6.2.4, there exists $z \in \mathbb{R}^m$ with
+\(
+z^T [A\;B] = 0, \quad z^T c = 1.
+\)
+Writing in block form,
+\(
+z^T A = 0, \quad z^T B = 0,
+\)
+so
+\(
+z \in \mathcal N(A^T) \cap \mathcal N(B^T),
+\)
+and $z \neq 0$.
+}
+\tsIdea{10.2 Orthogonal $2 \times 2$ matrices and rotation matrices}{
+    \textbf{Solution:}
+    \begin{enumerate}[label=(\alph*), noitemsep, topsep=0px]
+        \item Orthogonal $2 \times 2$ matrix that is not a rot. matrix (reflection)
+              \(
+              \begin{bmatrix}
+                  0 & 1 \\
+                  1 & 0
+              \end{bmatrix}
+              \)
+        \item
+              A is orthogonal $\Longrightarrow$ $|det(A)|=1$. \\ \\
+              Since A is orthogonal square matrix, then by lemma 7.1.2 and properties of orthogonal matrices ($A^\top A = I$) we know:
+              \( det(A^\top)det(A) = det(A^\top A) = det(I) = 1 \)
+              But also from theorem 7.2.5 we know that:
+              \(det(A^\top) = det(A)\)
+              so \(det(A)^2 = 1\). This implies that \(det(A)\) either 1 or -1, so $|det(A)|=1$ $\square$
+        \item Counter example non-orthogonal matrix:
+              \(
+              \begin{bmatrix}
+                  3 & 1 \\
+                  5 & 2
+              \end{bmatrix}
+              \)
+              Both columns are not unit vectors and dot product of columns is 13, so they are as well not orthogonal.
+    \end{enumerate}
+}
+\tsIdea{11.2 Determinant of block matrix}{
+    Solution using the decomposition suggested in the hint.
+    Observe that the block matrix
+    \(
+    M =
+    \begin{pmatrix}
+        A & B \\
+        0 & C
+    \end{pmatrix}
+    \)
+    can be decomposed as
+    \(
+    M =
+    \begin{pmatrix}
+        I & B \\
+        0 & C
+    \end{pmatrix}
+    \begin{pmatrix}
+        A & 0 \\
+        0 & I
+    \end{pmatrix},
+    \)
+    where $I$ and $0$ denote identity and zero matrices of appropriate sizes.
+    By T.7.2.6, we obtain
+    \(
+    \det(M)
+    =
+    \det
+    \begin{pmatrix}
+        I & B \\
+        0 & C
+    \end{pmatrix}
+    \det
+    \begin{pmatrix}
+        A & 0 \\
+        0 & I
+    \end{pmatrix}.
+    \)
+    \\
+    First, consider the matrix
+    \(
+    M' :=
+    \begin{pmatrix}
+        I & B \\
+        0 & C
+    \end{pmatrix}.
+    \)
+    Each of its first $m$ columns contains a unique non-zero entry.
+    Hence, in the determinant expansion
+    \(
+    \det(M') =
+    \sum_{\sigma \in \Pi_n}
+    \operatorname{sign}(\sigma)
+    \prod_{i=1}^n M'_{i,\sigma(i)},
+    \)
+    every contributing permutation must satisfy $\sigma(i)=i$ for all $i \in [m]$.
+    Therefore, the expression reduces to
+    \(
+    \det(M')
+    =
+    \sum_{\sigma \in \Pi_{n-m}}
+    \operatorname{sign}(\sigma)
+    \prod_{i=1}^{n-m} C_{i,\sigma(i)}
+    =
+    \det(C),
+    \)
+    since the non-zero entries in the first $m$ columns (or rows) are all equal to $1$.
+    \\
+    Similarly,
+    \(
+    \det
+    \begin{pmatrix}
+        A & 0 \\
+        0 & I
+    \end{pmatrix}
+    =
+    \sum_{\sigma \in \Pi_m}
+    \operatorname{sign}(\sigma)
+    \prod_{i=1}^m A_{i,\sigma(i)}
+    =
+    \det(A).
+    \)
+    \\
+    Combining the above results, we conclude that:
+    \(
+    \det(M)=\det(A)\det(C).
+    \)
+}
