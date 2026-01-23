@@ -1,0 +1,542 @@
+% Compact spacing for this section
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\itemsep}{0pt}
+
+% Strategy boxes - compact tcolorbox styles
+\newtcolorbox{stratbox}[1]{
+    colback=gray!5,
+    colframe=gray!50,
+    colbacktitle=gray!20,
+    coltitle=black,
+    fonttitle=\bfseries\small,
+    title=#1,
+    boxrule=0.4pt,
+    arc=1pt,
+    left=1pt,right=1pt,top=0pt,bottom=0pt,
+    before skip=1pt,
+    after skip=1pt,
+    boxsep=1pt
+}
+
+\newtcolorbox{factbox}[1]{
+    colback=blue!5,
+    colframe=blue!40,
+    colbacktitle=blue!20,
+    coltitle=black,
+    fonttitle=\bfseries\small,
+    title=#1,
+    boxrule=0.4pt,
+    arc=1pt,
+    left=1pt,right=1pt,top=0pt,bottom=0pt,
+    before skip=1pt,
+    after skip=1pt,
+    boxsep=1pt
+}
+
+\newtcolorbox{checkbox}[1]{
+    colback=green!5,
+    colframe=green!40,
+    colbacktitle=green!20,
+    coltitle=black,
+    fonttitle=\bfseries\small,
+    title=#1,
+    boxrule=0.4pt,
+    arc=1pt,
+    left=1pt,right=1pt,top=0pt,bottom=0pt,
+    before skip=1pt,
+    after skip=1pt,
+    boxsep=1pt
+}
+
+\newtcolorbox{warnbox}[1]{
+    colback=orange!5,
+    colframe=orange!50,
+    colbacktitle=orange!20,
+    coltitle=black,
+    fonttitle=\bfseries\small,
+    title=#1,
+    boxrule=0.4pt,
+    arc=1pt,
+    left=1pt,right=1pt,top=0pt,bottom=0pt,
+    before skip=1pt,
+    after skip=1pt,
+    boxsep=1pt
+}
+
+\subsection{Systems of Equations}
+
+\begin{stratbox}{General Solution}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Form augmented matrix $[A|\mathbf{b}]$
+        \item \textbf{Gauss-Jordan} $\to$ RREF
+        \item \textbf{Consistency:} Row $[0\cdots 0|\text{nonzero}]$ $\Rightarrow$ no solution
+        \item \textbf{Pivot vars:} cols with leading 1s; \textbf{Free vars:} others
+        \item $\mathbf{x}=\mathbf{x}_p+\mathbf{x}_h$; set free vars to 0 for $\mathbf{x}_p$
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Calculate Inverse}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Form $[A|I]$
+        \item Gauss-Jordan elimination
+        \item $[I|B]$ reached $\Rightarrow B=A^{-1}$
+        \item Row of zeros on left $\Rightarrow$ not invertible
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Linear Independence Check}
+    Given $\mathbf{v}_1,\dots,\mathbf{v}_n$:
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Form $A=[\mathbf{v}_1 \cdots \mathbf{v}_n]$
+        \item Gaussian Elimination $\to$ REF
+        \item Every column has pivot $\Rightarrow$ \textit{independent}
+        \item Free variables exist $\Rightarrow$ \textit{dependent}
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Calculating Determinant}
+    \textbf{$2\times 2$:} $\det\begin{bmatrix} a & b \\ c & d\end{bmatrix}=ad-bc$\\[1pt]
+    \textbf{Triangular:} Product of diagonal\\[1pt]
+    \textbf{General $n\times n$:} Row ops to upper triangular $U$
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Row swap: $\det \times (-1)$
+        \item $R_i - kR_j$: $\det$ unchanged
+        \item $kR_i$: $\det \times k$
+    \end{itemize}
+    $\det(A)=(\text{factors})\times\prod u_{ii}$
+\end{stratbox}
+
+\subsection{Fundamental Subspaces}
+
+\begin{factbox}{Rank Reference}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\text{rank}(A) = \text{rank}(A^\top)$
+        \item $\text{rank}(A) \le \min(m, n)$
+        \item $\dim(C(A)) = \dim(R(A)) = r$
+        \item $\dim(N(A)) = n - r$ \quad (nullity)
+        \item Full col rank ($r=n$): $N(A) = \{\mathbf{0}\}$
+        \item Full row rank ($r=m$): $A\mathbf{x}=\mathbf{b}$ always solvable
+        \item Full rank ($r=m=n$): $A$ invertible
+    \end{itemize}
+\end{factbox}
+
+\begin{stratbox}{Basis for Column Space C(A)}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Gaussian Elimination on $A \to R$
+        \item Find pivot column indices in $R$
+        \item Take those columns from \textbf{original} $A$
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Basis for Row Space R(A)}
+    Note: $R(A)=C(A^\top)$
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Gaussian Elimination on $A \to R$
+        \item Non-zero rows of $R$ form the basis
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Basis for Nullspace N(A)}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Gauss-Jordan on $A \to$ RREF
+        \item Express pivot vars in terms of free vars
+        \item Vectors multiplying free vars $=$ basis
+        \item $\dim(N(A))=n-r$
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Left Nullspace N(A')}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Find $N(A^\top)$ by solving $A^\top\mathbf{y}=\mathbf{0}$
+        \item Or: rows that become zero in RREF
+        \item $\dim(N(A^\top))=m-r$
+    \end{enumerate}
+\end{stratbox}
+
+\subsection{Orthogonality \& Projections}
+
+\begin{stratbox}{Project b onto line spanned by a}
+    \[\mathbf{p} = \text{proj}_{\mathbf{a}}(\mathbf{b}) = \frac{\mathbf{a}^\top \mathbf{b}}{\mathbf{a}^\top \mathbf{a}} \mathbf{a} = \frac{\mathbf{a}^\top \mathbf{b}}{\|\mathbf{a}\|^2}\mathbf{a}\]
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Compute $s = \mathbf{a}^\top \mathbf{b}$
+        \item Compute $n = \|\mathbf{a}\|^2 = \mathbf{a}^\top \mathbf{a}$
+        \item $\mathbf{p} = \frac{s}{n}\mathbf{a}$
+    \end{enumerate}
+    \textbf{Check:} $\mathbf{a}^\top (\mathbf{b} - \mathbf{p}) = 0$
+\end{stratbox}
+
+\begin{stratbox}{Least Squares (Overdetermined System)}
+    Find $\hat{\mathbf{x}}$ minimizing $\|A\mathbf{x}-\mathbf{b}\|^2$:
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Compute $M=A^\top A$
+        \item Compute $\mathbf{d}=A^\top\mathbf{b}$
+        \item Solve $M\hat{\mathbf{x}}=\mathbf{d}$
+    \end{enumerate}
+    If cols of $A$ independent: $\hat{\mathbf{x}}=(A^\top A)^{-1} A^\top\mathbf{b}$
+\end{stratbox}
+
+\begin{stratbox}{Project b onto Subspace S}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Put basis of $S$ as columns of $A$
+        \item Solve least squares for $\hat{\mathbf{x}}$
+        \item Projection: $\mathbf{p}=A\hat{\mathbf{x}}$
+    \end{enumerate}
+    \textbf{Projection Matrix:} $P=A(A^\top A)^{-1} A^\top$
+\end{stratbox}
+\subsection{Eigenvalues \& Eigenvectors}
+
+\begin{stratbox}{Find Eigenvalues and Eigenvectors}
+    \textbf{Eigenvalues $\lambda$:}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Solve $\det(A-\lambda I)=0$ (characteristic polynomial)
+    \end{enumerate}
+    \textbf{Eigenvectors $\mathbf{v}$:} For each $\lambda$:
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Form $(A-\lambda I)$
+        \item Find $N(A-\lambda I)$ (solve $(A-\lambda I)\mathbf{v}=\mathbf{0}$)
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{2x2 Eigenvalue Shortcut}
+    $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$\\[1pt]
+    Char poly: $\lambda^2 - \text{Tr}(A)\lambda + \det(A) = 0$\\[1pt]
+    $\lambda_{1,2} = \frac{\text{Tr}(A) \pm \sqrt{\text{Tr}(A)^2 - 4\det(A)}}{2}$\\[1pt]
+    Discriminant $D$: Real if $D\ge 0$; Complex if $D<0$
+\end{stratbox}
+
+\begin{stratbox}{Diagonalization}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Find eigenvalues $\lambda_1, \dots, \lambda_n$
+        \item Find $n$ independent eigenvectors $\mathbf{v}_1,\dots, \mathbf{v}_n$
+        \item $\Lambda = \text{diag}(\lambda_1,\dots,\lambda_n)$
+        \item $V = [\mathbf{v}_1 \cdots \mathbf{v}_n]$ (order matches $\Lambda$)
+    \end{enumerate}
+    \textbf{Not diagonalizable} if can't find $n$ independent eigenvectors
+\end{stratbox}
+
+\begin{stratbox}{Spectral Decomposition (Symmetric)}
+    Same as diagonalization, \textbf{but}:
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Eigenvalues guaranteed \textit{real}
+        \item Eigenvectors for different $\lambda$ are orthogonal
+        \item \textbf{Normalize} eigenvectors to length 1
+        \item Result: $A=Q\Lambda Q^\top$ ($Q$ orthogonal)
+    \end{itemize}
+\end{stratbox}
+
+\begin{stratbox}{SVD}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Compute $M=A^\top A$
+        \item Find eigenvalues $\lambda_1\ge\cdots\ge\lambda_r>0$ of $M$
+        \item Singular values: $\sigma_i=\sqrt{\lambda_i}$
+        \item $V$: orthonormal eigenvectors of $A^\top A$
+        \item $U$: $\mathbf{u}_i=\frac{1}{\sigma_i}A\mathbf{v}_i$ for $\sigma_i\neq 0$
+        \item Extend $U$ to orthonormal basis if needed
+    \end{enumerate}
+    $\Sigma$: $m\times n$ with $\sigma_i$ on diagonal
+\end{stratbox}
+
+\begin{factbox}{Algebraic vs Geometric Multiplicity}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item \textbf{Algebraic} $n_a$: multiplicity as root of char poly
+        \item \textbf{Geometric} $n_g$: $\dim(N(A-\lambda I))$
+        \item Always: $1 \le n_g \le n_a$
+        \item Diagonalizable iff $n_g = n_a$ for all $\lambda$
+    \end{itemize}
+\end{factbox}
+
+\subsection{Proof Strategies}
+
+\begin{stratbox}{Prove U is a Subspace}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item \textbf{Zero:} Show $\mathbf{0} \in U$
+        \item \textbf{Closure:} For $\mathbf{u}, \mathbf{v} \in U$, $\alpha\in\mathbb{R}$: show $\alpha\mathbf{u} + \mathbf{v} \in U$
+    \end{enumerate}
+    \textit{Disprove:} Find closure failure or show $\mathbf{0}\notin U$
+\end{stratbox}
+
+\begin{stratbox}{Prove Linear Independence}
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Set up: $\sum_{i=1}^k \alpha_i \mathbf{v}_i = \mathbf{0}$
+        \item Show this implies $\alpha_1 = \cdots = \alpha_k = 0$
+    \end{enumerate}
+    \textit{Matrix method:} $A = [\mathbf{v}_1 \cdots \mathbf{v}_k]$, show $N(A) = \{\mathbf{0}\}$
+\end{stratbox}
+
+\begin{stratbox}{Prove Injectivity / Surjectivity}
+    Let $T: V \to W$ linear (matrix $A$):
+    \begin{itemize}[nosep,leftmargin=*]
+        \item \textbf{Injective:} $\text{Ker}(T) = \{\mathbf{0}\}$
+        \item \textbf{Surjective:} $\text{Im}(T) = W$ (rank $=$ dim $W$)
+        \item \textbf{Bijective:} Both (or just one if $\dim V = \dim W$)
+    \end{itemize}
+\end{stratbox}
+
+\begin{stratbox}{Prove Matrix Properties}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item \textbf{Symmetric:} Show $A^\top = A$
+        \item \textbf{Orthogonal:} Show $Q^\top Q = I$
+        \item \textbf{Pos. Def.:} Show $\mathbf{x}^\top A \mathbf{x} > 0$ for $\mathbf{x}\neq\mathbf{0}$
+    \end{itemize}
+    Use: $(AB)^\top = B^\top A^\top$
+\end{stratbox}
+
+\subsection{Advanced Calculations}
+
+\begin{stratbox}{Polynomial Fitting (Least Squares)}
+    Fit $p(t) = \alpha_0 + \alpha_1 t + \cdots + \alpha_k t^k$ to $(t_i, y_i)$:
+    \[A = \begin{bmatrix} 1 & t_1 & \cdots & t_1^k \\ \vdots & \vdots & & \vdots \\ 1 & t_m & \cdots & t_m^k \end{bmatrix}, \quad \mathbf{b} = \begin{bmatrix} y_1 \\ \vdots \\ y_m \end{bmatrix}\]
+    Solve: $A^\top A \hat{\boldsymbol{\alpha}} = A^\top \mathbf{b}$
+\end{stratbox}
+
+\begin{stratbox}{Change of Basis}
+    $T$ has matrix $A$ in standard basis, new basis $\{\mathbf{v}_1,\dots,\mathbf{v}_n\}$:
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Form $V = [\mathbf{v}_1 \cdots \mathbf{v}_n]$
+        \item Matrix in new basis: $D = V^{-1} A V$
+        \item If basis = eigenvectors: $D = \Lambda$
+    \end{enumerate}
+\end{stratbox}
+
+\begin{stratbox}{Matrix Powers via Diagonalization}
+    If $A = V\Lambda V^{-1}$:
+    \[A^k = V\Lambda^k V^{-1}\]
+    where $\Lambda^k = \text{diag}(\lambda_1^k, \dots, \lambda_n^k)$
+\end{stratbox}
+
+\begin{stratbox}{Linear Recurrence via Diagonalization}
+    $a_n = c_1 a_{n-1} + c_2 a_{n-2}$:
+    \begin{enumerate}[nosep,leftmargin=*]
+        \item Form $M = \begin{bmatrix} c_1 & c_2 \\ 1 & 0 \end{bmatrix}$, $\mathbf{g}_n = \begin{bmatrix} a_{n+1} \\ a_n \end{bmatrix}$
+        \item $\mathbf{g}_n = M^n \mathbf{g}_0$
+        \item Diagonalize $M$ to compute $M^n$
+    \end{enumerate}
+\end{stratbox}
+
+\subsection{Quick Sanity Checks}
+
+\begin{checkbox}{Trace \& Determinant}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\text{Tr}(A) = \sum a_{ii} = \sum \lambda_i$
+        \item $\det(A) = \prod \lambda_i$
+        \item For $2\times 2$: $\lambda_1 + \lambda_2 = \text{Tr}$, $\lambda_1\lambda_2 = \det$
+    \end{itemize}
+\end{checkbox}
+
+\begin{checkbox}{Invertibility Checks}
+    $A$ is invertible iff:
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\det(A) \neq 0$
+        \item No zero eigenvalue
+        \item Full rank
+        \item $N(A) = \{\mathbf{0}\}$
+        \item Columns are independent
+    \end{itemize}
+\end{checkbox}
+
+\begin{checkbox}{Eigenvalue Shortcuts}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Eigenvalues of $A^k$: $\lambda_i^k$
+        \item Eigenvalues of $A^{-1}$: $1/\lambda_i$
+        \item Eigenvalues of $A + cI$: $\lambda_i + c$
+        \item Row sums constant $s$ $\Rightarrow$ $\lambda = s$ with $\mathbf{v} = [1,\dots,1]^\top$
+    \end{itemize}
+\end{checkbox}
+
+\begin{checkbox}{Rank Identities}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\text{rank}(A) = \text{rank}(A^\top) = \text{rank}(A^\top A)$
+        \item Rank = \# pivots = \# nonzero singular values
+        \item $\text{rank}(AB) \le \min(\text{rank } A, \text{rank } B)$
+        \item $\text{rank}(A+B) \le \text{rank}(A) + \text{rank}(B)$
+    \end{itemize}
+\end{checkbox}
+
+\subsection{Matrix Type Properties}
+
+\begin{factbox}{Symmetric Matrices}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Eigenvalues are \textbf{real}
+        \item Eigenvectors from different eigenspaces are \textbf{orthogonal}
+        \item Always orthogonally diagonalizable: $A = Q\Lambda Q^\top$
+        \item Rank = \# nonzero eigenvalues
+    \end{itemize}
+\end{factbox}
+
+\begin{factbox}{Orthogonal Matrices}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $Q^{-1} = Q^\top$
+        \item $\det(Q) = \pm 1$
+        \item $|\lambda| = 1$ (eigenvalues on unit circle)
+        \item Preserves lengths: $\|Q\mathbf{x}\| = \|\mathbf{x}\|$
+        \item Preserves angles: $(Q\mathbf{x})^\top(Q\mathbf{y}) = \mathbf{x}^\top\mathbf{y}$
+    \end{itemize}
+\end{factbox}
+
+\begin{factbox}{Skew-Symmetric Matrices}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Diagonal entries = 0
+        \item Eigenvalues purely imaginary or zero
+        \item $\mathbf{x}^\top A \mathbf{x} = 0$ for all real $\mathbf{x}$
+        \item $\det(A) \ge 0$ if $n$ even; $\det(A) = 0$ if $n$ odd
+    \end{itemize}
+\end{factbox}
+
+\begin{factbox}{Projection Matrices}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Eigenvalues only 0 or 1
+        \item $I - P$ projects onto $S^\perp$
+        \item $\text{rank}(P) = \dim(\text{image})$
+        \item Trace = rank
+    \end{itemize}
+\end{factbox}
+
+\begin{factbox}{Positive Definite (Symmetric)}
+    Equivalent conditions:
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\mathbf{x}^\top A \mathbf{x} > 0$ for all $\mathbf{x} \neq \mathbf{0}$
+        \item All eigenvalues $> 0$
+        \item All pivots $> 0$
+        \item All leading principal minors $> 0$ (Sylvester)
+        \item $A = R^\top R$ for some invertible $R$
+    \end{itemize}
+    $A^{-1}$ also positive definite. (Use $\ge$ for semidefinite)
+\end{factbox}
+
+\begin{factbox}{Nilpotent \& Idempotent}
+    \textbf{Nilpotent} ($A^k = 0$):
+    \begin{itemize}[nosep,leftmargin=*]
+        \item All eigenvalues = 0
+        \item $\det(A) = 0$, $\text{Tr}(A) = 0$
+    \end{itemize}
+    \textbf{Idempotent} ($A^2 = A$):
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Eigenvalues only 0 or 1
+        \item Like projections
+    \end{itemize}
+\end{factbox}
+
+\subsection{Quick Formulas}
+
+\begin{warnbox}{2x2 Inverse}
+    \[A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \Rightarrow A^{-1} = \frac{1}{ad-bc} \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}\]
+\end{warnbox}
+
+\begin{warnbox}{Determinant Rules}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\det(A^{-1}) = 1/\det(A)$
+        \item $\det(AB) = \det(A)\det(B)$
+        \item $\det(kA) = k^n \det(A)$ \quad ($n\times n$)
+        \item $\det(A^\top) = \det(A)$
+    \end{itemize}
+\end{warnbox}
+
+\begin{warnbox}{Trace Rules}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\text{Tr}(A+B) = \text{Tr}(A) + \text{Tr}(B)$
+        \item $\text{Tr}(kA) = k\,\text{Tr}(A)$
+        \item $\text{Tr}(ABC) = \text{Tr}(BCA) = \text{Tr}(CAB)$
+        \item $\text{Tr}(A^\top A) = \sum_{i,j} a_{ij}^2$
+    \end{itemize}
+\end{warnbox}
+
+\begin{warnbox}{Block Triangular Matrix}
+    $M = \begin{bmatrix} A & B \\ 0 & D \end{bmatrix}$:
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $\det(M) = \det(A)\det(D)$
+        \item Eigenvalues = eigenvalues of $A$ $\cup$ eigenvalues of $D$
+        \item $M^{-1} = \begin{bmatrix} A^{-1} & -A^{-1}BD^{-1} \\ 0 & D^{-1} \end{bmatrix}$
+    \end{itemize}
+\end{warnbox}
+
+\begin{warnbox}{Cross Product in R3}
+    $\mathbf{u} \times \mathbf{v} = \det \begin{bmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ u_1 & u_2 & u_3 \\ v_1 & v_2 & v_3 \end{bmatrix}$
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Orthogonal to both $\mathbf{u}$ and $\mathbf{v}$
+        \item $\|\mathbf{u} \times \mathbf{v}\| = $ parallelogram area
+        \item $\mathbf{u} \cdot (\mathbf{v} \times \mathbf{w}) = \det[\mathbf{u},\mathbf{v},\mathbf{w}]$ (volume)
+    \end{itemize}
+\end{warnbox}
+
+\subsection{Requirements Checklist}
+
+\begin{checkbox}{When Can I Use This Method?}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item \textbf{Gaussian Elim:} Any matrix
+        \item \textbf{$A^{-1}$:} Square AND $\det(A)\neq 0$
+        \item \textbf{CR Decomp:} Any matrix
+        \item \textbf{QR Decomp:} Full column rank
+        \item \textbf{Diagonalization:} $n$ indep. eigenvectors
+        \item \textbf{Orth. Diag. $Q\Lambda Q^\top$:} Symmetric
+        \item \textbf{Cholesky $LL^\top$:} Symmetric + Pos. Def.
+        \item \textbf{SVD:} Any matrix (no restrictions!)
+        \item \textbf{Least Squares (unique):} Full column rank
+    \end{itemize}
+\end{checkbox}
+
+\begin{checkbox}{Standard Basis Matrices}
+    $E_{ij} = \mathbf{e}_i \mathbf{e}_j^\top$ (1 at $(i,j)$, else 0)
+    \[E_{ij} E_{kl} = \delta_{jk} E_{il}\]
+    (Zero unless ``inner indices'' match: $j=k$)
+\end{checkbox}
+
+\begin{checkbox}{Sylvester's Rank Inequality}
+    For $A: m\times n$, $B: n\times k$:
+    \[\text{rank}(A) + \text{rank}(B) - n \le \text{rank}(AB)\]
+\end{checkbox}
+
+\subsection{Dimension Formulas}
+
+\begin{factbox}{Rank-Nullity Theorem}
+    For $A: m \times n$:
+    \[\text{rank}(A) + \dim(N(A)) = n\]
+    i.e., \# pivot cols + \# free vars = \# cols
+\end{factbox}
+
+\begin{factbox}{Four Fundamental Subspaces}
+    For $A: m \times n$ with rank $r$:
+    \begin{center}
+        \begin{tabular}{lcc}
+            \textbf{Space}     & \textbf{In}    & \textbf{Dim} \\
+            \hline
+            $C(A)$             & $\mathbb{R}^m$ & $r$          \\
+            $N(A)$             & $\mathbb{R}^n$ & $n-r$        \\
+            $R(A) = C(A^\top)$ & $\mathbb{R}^n$ & $r$          \\
+            $N(A^\top)$        & $\mathbb{R}^m$ & $m-r$        \\
+        \end{tabular}
+    \end{center}
+    Orthogonal pairs: $C(A) \perp N(A^\top)$, $R(A) \perp N(A)$
+\end{factbox}
+
+\begin{factbox}{SVD Dimensions}
+    $A: m\times n$ with rank $r$, $A = U\Sigma V^\top$:
+    \begin{itemize}[nosep,leftmargin=*]
+        \item $U: m \times m$ (or $m \times r$ reduced)
+        \item $\Sigma: m \times n$ (or $r \times r$ reduced)
+        \item $V: n \times n$ (or $n \times r$ reduced)
+        \item \# nonzero singular values $= r$
+    \end{itemize}
+\end{factbox}
+
+\subsection{Common Mistakes to Avoid}
+
+\begin{warnbox}{Frequent Errors}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Taking pivot cols from RREF instead of original $A$
+        \item Forgetting to normalize in Gram-Schmidt
+        \item $(AB)^{-1} = A^{-1}B^{-1}$ \textbf{WRONG!} It's $B^{-1}A^{-1}$
+        \item $(A+B)^2 \neq A^2 + 2AB + B^2$ (unless $AB=BA$)
+        \item $\det(A+B) \neq \det(A) + \det(B)$
+        \item Eigenvalues of $A+B \neq$ eigenvalues of $A$ + eigenvalues of $B$
+        \item Confusing $\lambda$ for $A$ vs $A^\top$ (same) vs $A^{-1}$ ($1/\lambda$)
+    \end{itemize}
+\end{warnbox}
+
+\begin{warnbox}{Diagonalization Pitfalls}
+    \begin{itemize}[nosep,leftmargin=*]
+        \item Matrix may not be diagonalizable even with $n$ eigenvalues (need $n$ \textbf{independent} eigenvectors)
+        \item Order of eigenvectors in $V$ must match order of eigenvalues in $\Lambda$
+        \item Complex eigenvalues: need complex eigenvectors
+    \end{itemize}
+\end{warnbox}

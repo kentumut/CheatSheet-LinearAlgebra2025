@@ -93,8 +93,6 @@
 \tsIdea{Pseudoinverse of diagonal matrix}{
     Diagonal matrix \(\Rightarrow\) invert nonzero diagonals, keep zeros.
 }
-\newpage
-\(\hspace{-8px}\heartsuit\)
 \newline
 \tsIdea{Diagonalization of a symmetric matrix}{
     \textbf{Diagonalization of a symmetric matrix (example)}
@@ -144,99 +142,63 @@
     Reordering eigenvalues requires the same reordering of eigenvectors.
 }
 \newline
-\tsIdea{Computing singular values}{
-    \textbf{Computing singular values}
-    \\
-    For a matrix $A\in\mathbb{R}^{m\times n}$, the singular values are
-    \(
-    \sigma_i=\sqrt{\lambda_i},
-    \)
-    where $\lambda_i$ are the eigenvalues of $A^TA$.
-    \\
-    \textbf{Example:}
-    \(
-    A=\begin{pmatrix}3&0\\4&0\end{pmatrix}.
-    \)
-    Compute
-    \(
-    A^TA=
-    \begin{pmatrix}3&4\\0&0\end{pmatrix}
-    \begin{pmatrix}3&0\\4&0\end{pmatrix}
-    =
-    \begin{pmatrix}25&0\\0&0\end{pmatrix}.
-    \)
-    Eigenvalues of $A^TA$:
-    \(
-    \lambda_1=25,\quad \lambda_2=0.
-    \)
-    \\
-    Singular values:
-    \(
-    \sigma_1=\sqrt{25}=5,\quad \sigma_2=\sqrt{0}=0.
-    \)
-    \[\boxed
-        {
-            \text{Singular values of }A=\sqrt{\text{eigenvalues of }A^TA}.
-        }
-    \]
-}
 \tsIdea{Determinant expansion along a row/column works}{
-    Use:
-    \[
-        C_{ij}=(-1)^{i+j}\det(M_{ij})
-    \]
-    where \(C_{ij}\) is the cofactor, and $M_{ij}$ is obtained by deleting row $i$ and column $j$. Usually, we choose a row or a column that is zero except for one entry to simplify the expansion.
-    \\ \\
-    \textbf{Example:}
-    \[
-        \lambda I-A=
-        \begin{pmatrix}
-            \lambda-\frac92 & 0       & -\frac12        \\
-            0               & \lambda & 0               \\
-            -\frac12        & 0       & \lambda-\frac92
-        \end{pmatrix}.
-    \]
-    Expanding along row 2:
-    \[
-        \det(\lambda I-A)
-        =0\cdot C_{21}
-        +\lambda\cdot C_{22}
-        +0\cdot C_{23}
-        =\lambda\,C_{22}.
-    \]
-    \textbf{Cofactor computation:}
-    \[
-        C_{22}=(-1)^{2+2}
-        \det
-        \begin{pmatrix}
-            \lambda-\frac92 & -\frac12        \\
-            -\frac12        & \lambda-\frac92
-        \end{pmatrix}.
-    \]
-    Since $(-1)^{2+2}=(-1)^4=1$, we obtain
-    \[
-        C_{22}=
-        \det
-        \begin{pmatrix}
-            \lambda-\frac92 & -\frac12        \\
-            -\frac12        & \lambda-\frac92
-        \end{pmatrix}.
-    \]
-    Therefore,
-    \[
-        \det(\lambda I-A)
-        =
-        \lambda
-        \det
-        \begin{pmatrix}
-            \lambda-\frac92 & -\frac12        \\
-            -\frac12        & \lambda-\frac92
-        \end{pmatrix}.
-    \]
-    \\
-    \textbf{Conclusion:}
-    Expanding along rows or columns with many zeros is always valid and
-    simplifies determinant computations.
+Use:
+\[
+    C_{ij}=(-1)^{i+j}\det(M_{ij})
+\]
+where \(C_{ij}\) is the cofactor, and $M_{ij}$ is obtained by deleting row $i$ and column $j$. Usually, we choose a row or a column that is zero except for one entry to simplify the expansion.
+\\ \\
+\textbf{Example:}
+\[
+    \lambda I-A=
+    \begin{pmatrix}
+        \lambda-\frac92 & 0       & -\frac12        \\
+        0               & \lambda & 0               \\
+        -\frac12        & 0       & \lambda-\frac92
+    \end{pmatrix}.
+\]
+Expanding along row 2:
+\[
+    \det(\lambda I-A)
+    =0\cdot C_{21}
+    +\lambda\cdot C_{22}
+    +0\cdot C_{23}
+    =\lambda\,C_{22}.
+\]
+\textbf{Cofactor computation:}
+\[
+    C_{22}=(-1)^{2+2}
+    \det
+    \begin{pmatrix}
+        \lambda-\frac92 & -\frac12        \\
+        -\frac12        & \lambda-\frac92
+    \end{pmatrix}.
+\]
+Since $(-1)^{2+2}=(-1)^4=1$, we obtain
+\[
+    C_{22}=
+    \det
+    \begin{pmatrix}
+        \lambda-\frac92 & -\frac12        \\
+        -\frac12        & \lambda-\frac92
+    \end{pmatrix}.
+\]
+Therefore,
+\[
+    \det(\lambda I-A)
+    =
+    \lambda
+    \det
+    \begin{pmatrix}
+        \lambda-\frac92 & -\frac12        \\
+        -\frac12        & \lambda-\frac92
+    \end{pmatrix}.
+\]
+\\
+\textbf{Conclusion:}
+Expanding along rows or columns with many zeros is always valid and
+simplifies determinant computations.
 }
 \newline
 \tsIdea{Fast computation of singular values (symmetric case)}{
@@ -356,19 +318,19 @@
 }
 % From correction of parts with multiple choice questions
 \tsIdea{Determining when matrix returns to identity}{
-    If $A^{m}=I$ and $A^{n}=I$, then
-    \[
-        A^{\gcd(m,n)}=I.
-    \]
-    Proof sketch to template: \\
-    Let $d=\gcd(m,n)$. Then there exist integers $x,y$ with $d=xm+yn$ (B\'ezout).
-    Assuming $A$ is invertible (true in any group; for matrices this means $A\in GL$),
-    \[
-        A^{d}=A^{xm+yn}=(A^{m})^{x}(A^{n})^{y}=I^{x}I^{y}=I.
-    \]
-    \textbf{When can you conclude $A=I$?}
-    You can conclude $A=I$ if $\gcd(m,n)=1$, because then $A^{1}=A=I$.
-    Otherwise, you can only conclude that the order of $A$ divides $\gcd(m,n)$ (i.e., $A$ is a root of unity of that exponent).
+If $A^{m}=I$ and $A^{n}=I$, then
+\[
+    A^{\gcd(m,n)}=I.
+\]
+Proof sketch to template: \\
+Let $d=\gcd(m,n)$. Then there exist integers $x,y$ with $d=xm+yn$ (B\'ezout).
+Assuming $A$ is invertible (true in any group; for matrices this means $A\in GL$),
+\[
+    A^{d}=A^{xm+yn}=(A^{m})^{x}(A^{n})^{y}=I^{x}I^{y}=I.
+\]
+\textbf{When can you conclude $A=I$?}
+You can conclude $A=I$ if $\gcd(m,n)=1$, because then $A^{1}=A=I$.
+Otherwise, you can only conclude that the order of $A$ divides $\gcd(m,n)$ (i.e., $A$ is a root of unity of that exponent).
 }
 \newline
 \tsIdea{Pairwise linear independence}{
